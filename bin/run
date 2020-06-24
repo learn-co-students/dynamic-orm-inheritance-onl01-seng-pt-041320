@@ -10,6 +10,11 @@ puts "song name: " + song.name
 puts "song album: " + song.album
 song.save
 
-puts Song.find_by_name("Hello")
+sherwood = Song.new(name: "The Summer Sends Its Love", album: "EP")
+sherwood.save
+
+sql = "SELECT * FROM songs"
+result = DB[:conn].execute(sql)
+result.each {|song| puts "#{song[1]} - #{song[2]}"}
 
 # DB[:conn].execute("SELECT * FROM songs")
